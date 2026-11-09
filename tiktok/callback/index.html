@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Returning to Creator Stack Combo</title>
+  <style>
+    body{margin:0;background:#0a0a0c;color:#e8e8ec;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:24px}
+    .wrap{max-width:640px;margin:40px auto;background:#141419;border:1px solid #26262e;border-radius:12px;padding:24px}
+    h1{font-size:20px;margin:0 0 8px}
+    p{color:#9a9aad;margin:0 0 12px}
+    a{color:#8ab4ff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>TikTok authorization</h1>
+    <p id="msg">Returning to Creator Stack Combo…</p>
+    <p><a id="manual" hidden href="#">Continue to Creator Stack Combo</a></p>
+    <noscript>
+      <p>JavaScript is required to finish connecting TikTok. Enable JavaScript, or copy the full address from your browser's address bar (including <code>?code=</code> and <code>state=</code>) and open it on your Mac at
+      <code>http://localhost:8000/integrations/tiktok/callback</code> (or <code>:18000</code> for staging).</p>
+    </noscript>
+  </div>
+  <script>(function () {
+  var DEFAULT_TARGET = 'http://localhost:8000/integrations/tiktok/callback';
+  var ALLOWED_PORTS = { 8000: true, 18000: true };
+  var FORWARD_KEYS = ['code', 'state', 'error', 'error_description'];
+
+  function decodeRetPort(state) {
+    if (!state || typeof state !== 'string') return null;
+    if (state.charAt(0) === '.') return null;
+    var first = state.split('.')[0];
+    if (!first) return null;
+    try {
+      var b64 = first.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      var obj = JSON.parse(atob(b64));
+      if (!obj || obj.ret === undefined || obj.ret === null) return null;
+      var port = Number(obj.ret);
+      if (!Number.isInteger(port)) return null;
+      return port;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function targetFromRet(ret) {
+    var port = Number(ret);
+    if (!Number.isInteger(port) || !ALLOWED_PORTS[port]) return DEFAULT_TARGET;
+    return 'http://localhost:' + port + '/integrations/tiktok/callback';
+  }
+
+  function pickTarget(state) {
+    return targetFromRet(decodeRetPort(state));
+  }
+
+  function pickForwardParams(sp) {
+    var out = {};
+    for (var i = 0; i < FORWARD_KEYS.length; i++) {
+      var key = FORWARD_KEYS[i];
+      var v = sp.get(key);
+      if (v != null && v !== '') out[key] = v;
+    }
+    return out;
+  }
+
+  function buildRelayUrl(target, params) {
+    var u = new URL(target);
+    for (var i = 0; i < FORWARD_KEYS.length; i++) {
+      var key = FORWARD_KEYS[i];
+      if (params[key] != null && params[key] !== '') u.searchParams.set(key, params[key]);
+    }
+    return u.toString();
+  }
+
+  function isAllowedTarget(urlString) {
+    try {
+      var u = new URL(urlString);
+      if (u.protocol !== 'http:' && u.protocol !== 'https:') return false;
+      if (u.hostname !== 'localhost' && u.hostname !== '127.0.0.1') return false;
+      var port = u.port ? Number(u.port) : (u.protocol === 'https:' ? 443 : 80);
+      return !!ALLOWED_PORTS[port];
+    } catch (e) {
+      return false;
+    }
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  // Strip the query from the address bar immediately (code/state must not linger).
+  try {
+    history.replaceState(null, '', window.location.pathname);
+  } catch (e) {}
+
+  var forwarded = pickForwardParams(params);
+  var target = pickTarget(forwarded.state);
+  if (!isAllowedTarget(target)) target = DEFAULT_TARGET;
+  var dest = buildRelayUrl(target, forwarded);
+
+  var link = document.getElementById('manual');
+  if (link) {
+    link.href = dest;
+    link.hidden = false;
+  }
+  var msg = document.getElementById('msg');
+  if (msg) msg.textContent = 'Returning to Creator Stack Combo…';
+
+  // location.replace so the Pages URL is not kept in history with secrets.
+  try {
+    location.replace(dest);
+  } catch (e) {
+    if (msg) msg.textContent = 'Open the link below to finish connecting TikTok.';
+  }
+})();</script>
+</body>
+</html>
