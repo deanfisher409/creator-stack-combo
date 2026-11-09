@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Getting started with Creator Stack Combo: unzip the stack, run Docker Desktop, pull the local Ollama models, start with ./start.sh, and connect TikTok from the Observe panel." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Creator Stack Combo" />
+<meta property="og:title" content="Getting Started — Creator Stack Combo" />
+<meta property="og:description" content="Getting started with Creator Stack Combo: unzip the stack, run Docker Desktop, pull the local Ollama models, start with ./start.sh, and connect TikTok from the Observe panel." />
+<meta property="og:url" content="https://creatorstackcombo.xyz/getting-started.html" />
+<meta property="og:image" content="icon-1024x1024.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Getting Started — Creator Stack Combo" />
+<meta name="twitter:description" content="Getting started with Creator Stack Combo: unzip the stack, run Docker Desktop, pull the local Ollama models, start with ./start.sh, and connect TikTok from the Observe panel." />
+<meta name="twitter:image" content="icon-1024x1024.png" />
+<link rel="icon" href="icon-1024x1024.png" type="image/png" />
+<title>Getting Started — Creator Stack Combo</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Creator Stack Combo — home">
+      <span class="brand-mark" aria-hidden="true">CS</span>
+      <span class="brand-text">
+        <b>Creator Stack Combo</b>
+        <span>Local-first creator operations</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+      <a class="legal" href="terms.html">Terms of Service</a>
+      <a class="legal" href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <div class="hero" style="padding-bottom:0">
+      <p class="kicker"><i aria-hidden="true"></i> Getting started</p>
+      <h1>Set it up, <span class="accent">on your computer.</span></h1>
+      <p class="pitch">Unzip, start Docker, pull the local models, run one script — then connect your own TikTok account.</p>
+      <p class="lede">Creator Stack Combo runs in Docker on your own computer. There is no cloud account to sign up for and no hosted dashboard. Follow the steps below in order.</p>
+    </div>
+
+    <section aria-labelledby="before-heading">
+      <div class="section-head">
+        <p class="eyebrow">Before you start</p>
+        <h2 id="before-heading">What you need</h2>
+        <p>Have these ready before step 1. Nothing else is required to get the stack running.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>The Creator Stack Combo files</h3><p>The combo download, unzipped on your computer. The steps below assume the unzipped folder is called <code>creator-stack-combo</code>.</p></article>
+        <article class="card"><h3>Docker Desktop</h3><p>Docker Desktop installed on your computer, and running before you start the stack.</p></article>
+        <article class="card"><h3>Ollama</h3><p>Ollama installed on your computer, for the local models the agent uses for drafting.</p></article>
+        <article class="card"><h3>Your own TikTok account</h3><p>The TikTok account you own and want to connect. You will sign in on TikTok’s own pages — the app never asks for your TikTok password.</p></article>
+      </div>
+      <p style="color:var(--muted); font-size:15px">It runs on macOS, Windows, and Linux, through Docker Desktop. Make sure you have enough disk space for your video and clips.</p>
+    </section>
+
+    <section aria-labelledby="steps-heading" style="padding-top:8px">
+      <div class="section-head">
+        <p class="eyebrow">Install</p>
+        <h2 id="steps-heading">Seven steps to a running stack</h2>
+        <p>Each step builds on the last. If a step fails, fix that step before moving on.</p>
+      </div>
+      <div class="flow" style="gap:18px">
+        <div class="flow-step"><span class="flow-num">1</span><div><b>Unzip Creator Stack Combo</b><p>Unzip the combo download on your computer, so you have a folder called <code>creator-stack-combo</code>.</p></div></div>
+        <div class="flow-step"><span class="flow-num">2</span><div><b>Make sure Docker Desktop is running</b><p>Open Docker Desktop and wait until it reports that it is running. The stack will not start without it.</p></div></div>
+        <div class="flow-step"><span class="flow-num">3</span><div><b>Pull the local models with Ollama</b><p>Pull the two models the agent uses:</p><pre><code>ollama pull qwen2.5:7b
+ollama pull qwen2.5vl:3b</code></pre><p>Wait for each pull to finish before continuing.</p></div></div>
+        <div class="flow-step"><span class="flow-num">4</span><div><b>Start the stack</b><p>From inside the unzipped folder, run the start script:</p><pre><code>cd creator-stack-combo &amp;&amp; ./start.sh</code></pre><p>The script checks the folders, generates the stack’s own secret keys, and starts the services in order. Wait for it to finish.</p></div></div>
+        <div class="flow-step"><span class="flow-num">5</span><div><b>Open the Observe panel</b><p>Open the panel in a browser on the same computer:</p><p><a href="http://localhost:8000/observe">http://localhost:8000/observe</a></p><p>It asks for the admin key once, then shows the agent’s status, drafts, and the TikTok connection card.</p></div></div>
+        <div class="flow-step"><span class="flow-num">6</span><div><b>Open the ClipForge dashboard</b><p>ClipForge has its own dashboard in a browser on the same computer:</p><p><a href="http://localhost:5173">http://localhost:5173</a></p><p>This is where long-form video is turned into vertical clips.</p></div></div>
+        <div class="flow-step"><span class="flow-num">7</span><div><b>Connect TikTok from the Observe panel</b><p>In the Observe panel, use “Connect TikTok.” TikTok’s own sign-in page opens — log in there and approve the permissions. The app never sees or stores your TikTok password.</p></div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="after-heading" style="padding-top:8px">
+      <div class="section-head">
+        <p class="eyebrow">After setup</p>
+        <h2 id="after-heading">What happens next</h2>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Review drafts first</h3><p>The agent starts researching trends and drafting on its own schedule. Every draft waits in the approval queue — read the exact wording and clip before deciding anything. Nothing is published from a draft on its own.</p></article>
+        <article class="card"><h3>Make clips with ClipForge</h3><p>Use the ClipForge dashboard to cut vertical 9:16 clips from your own long-form video, with captions. Finished clips come back as drafts for the same review step.</p></article>
+        <article class="card"><h3>Revoke access any time</h3><p>In TikTok’s settings, under authorized apps, remove Creator Stack Combo at any time. That immediately stops the app from reaching your account. See the <a href="privacy.html">Privacy Policy</a> for exactly what is stored and where.</p></article>
+        <article class="card"><h3>Stuck?</h3><p>Check that Docker Desktop is running and that the start script finished, then re-open the Observe panel. If you still need help, see <a href="support.html">Support</a> or email <a href="mailto:hello@creatorstackcombo.xyz">hello@creatorstackcombo.xyz</a>.</p></article>
+      </div>
+      <p style="margin-top:18px; color:var(--muted); font-size:15px">More detail: <a href="how-it-works.html">How it works</a> · <a href="faq.html">FAQ</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+    </section>
+
+  </div>
+</main>
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <p><strong style="color:var(--ink)">Creator Stack Combo</strong> · A local-first TikTok creator operations tool from the TIKTOK Manager Bot developer organization. Runs on the creator's own computer — drafts content for human approval and makes vertical clips with ClipForge.</p>
+      <p style="margin-top:8px">Contact: <a href="mailto:hello@creatorstackcombo.xyz">hello@creatorstackcombo.xyz</a></p>
+    </div>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="#top">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

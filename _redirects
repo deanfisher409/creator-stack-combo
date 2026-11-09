@@ -1,0 +1,4 @@
+# Force HTTPS on Cloudflare Pages (http:// -> https://, same path).
+# (Netlify forces HTTPS automatically; GitHub Pages ignores this file.)
+# Place this file in site/ — it deploys automatically with the site.
+http://:splat https://:splat 301

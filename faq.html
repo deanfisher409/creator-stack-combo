@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Frequently asked questions about Creator Stack Combo: accounts, posting, passwords, data storage, and revoking access." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Creator Stack Combo" />
+<meta property="og:title" content="FAQ — Creator Stack Combo" />
+<meta property="og:description" content="Frequently asked questions about Creator Stack Combo: accounts, posting, passwords, data storage, and revoking access." />
+<meta property="og:url" content="https://creatorstackcombo.xyz/faq.html" />
+<meta property="og:image" content="icon-1024x1024.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="FAQ — Creator Stack Combo" />
+<meta name="twitter:description" content="Frequently asked questions about Creator Stack Combo: accounts, posting, passwords, data storage, and revoking access." />
+<meta name="twitter:image" content="icon-1024x1024.png" />
+<link rel="icon" href="icon-1024x1024.png" type="image/png" />
+<title>FAQ — Creator Stack Combo</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Creator Stack Combo — home">
+      <span class="brand-mark" aria-hidden="true">CS</span>
+      <span class="brand-text">
+        <b>Creator Stack Combo</b>
+        <span>Local-first creator operations</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+      <a class="legal" href="terms.html">Terms of Service</a>
+      <a class="legal" href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <div class="hero" style="padding-bottom:0">
+      <p class="kicker"><i aria-hidden="true"></i> FAQ</p>
+      <h1>Questions, <span class="accent">answered.</span></h1>
+      <p class="lede">The questions creators ask most about Creator Stack Combo — what it is, what it needs, and what it does with a TikTok account.</p>
+    </div>
+
+    <section aria-labelledby="faq-list">
+      <div class="grid" style="grid-template-columns:1fr">
+        <article class="card"><h3>Is Creator Stack Combo a website I sign up for?</h3><p>No. It is software that runs on the creator's own computer, in Docker. There is no Creator Stack Combo account to create and no hosted dashboard. This website is only the public product page for the app.</p></article>
+        <article class="card"><h3>Do I need a TikTok account to use it?</h3><p>Yes — your own TikTok account, connected through TikTok Login Kit. The app only works with an account its owner has explicitly connected and authorized.</p></article>
+        <article class="card"><h3>Does the app post to TikTok by itself?</h3><p>No. Content is prepared as drafts in an approval queue. The creator reviews the exact draft — hook, caption, clip, and all — and decides what happens next. Nothing is published from a draft on its own.</p></article>
+        <article class="card"><h3>Does the app see my TikTok password?</h3><p>No. Sign-in happens only on TikTok's own pages. The app receives an access token from TikTok after the creator approves the permissions, and that token is encrypted and stored locally on the creator's computer.</p></article>
+        <article class="card"><h3>What does the app access on my TikTok account?</h3><p>Only what the approved permissions allow: basic profile information, profile stats, and the creator's video list, plus publishing videos the creator reviewed and approved. The full list is in the <a href="privacy.html">Privacy Policy</a>.</p></article>
+        <article class="card"><h3>Where does my data live?</h3><p>On the creator's own computer. Drafts, clips, tokens, and logs are stored locally. There is no Creator Stack Combo server holding creator data.</p></article>
+        <article class="card"><h3>Can I revoke the app's access?</h3><p>Yes, any time. In TikTok's settings, under authorized apps, remove Creator Stack Combo. You can also delete the local token store on your computer. Both stop the app from reaching the account.</p></article>
+        <article class="card"><h3>What computers does it run on?</h3><p>macOS, Windows, and Linux, through Docker Desktop. The creator needs enough disk space for their video and clips; the exact requirements are in the stack's setup guide.</p></article>
+        <article class="card"><h3>Does it work with other platforms?</h3><p>This app is built for TikTok, using TikTok's official Login Kit and Content Posting API. It does not post to other platforms.</p></article>
+        <article class="card"><h3>Does it buy followers or fake engagement?</h3><p>No. It does not buy followers, reviews, or engagement, and it does not run engagement pods, mass direct messages, or automated liking and following.</p></article>
+        <article class="card"><h3>Who do I contact with a question?</h3><p>Email <a href="mailto:hello@creatorstackcombo.xyz">hello@creatorstackcombo.xyz</a>. That address is monitored by the operator of this app.</p></article>
+        <article class="card"><h3>Is Creator Stack Combo free?</h3><p>There is no Creator Stack Combo subscription and no hosted service to pay for — the software runs on your own computer. Your own costs are the computer, disk space, and internet connection you already use to run it; no price is promised here, and nothing in this app asks you to pay to use it.</p></article>
+        <article class="card"><h3>What happens if TikTok rejects the app?</h3><p>If TikTok does not approve the app, the TikTok connection cannot be used until the issue TikTok raised is fixed and the app is approved. The local parts of the stack — drafting and clipping from your own video — do not depend on TikTok approval. There is no guarantee of approval, and review can take several days to two weeks.</p></article>
+        <article class="card"><h3>Can I use it for Instagram or Facebook?</h3><p>This build is for TikTok only, using TikTok’s official Login Kit and Content Posting API. Separate Instagram and Facebook editions of the stack exist — see the <a href="changelog.html">Changelog</a> — but they are separate editions, not features of this TikTok build, and this build does not post to other platforms.</p></article>
+        <article class="card"><h3>Is my TikTok account safe using it?</h3><p>The app uses only TikTok’s official APIs, never asks for your TikTok password, and stores its access token encrypted on your own computer. You can revoke access at any time in TikTok’s settings. That said, no tool can guarantee how TikTok will treat an account: follow TikTok’s Terms of Service and Community Guidelines, keep your drafts honest, and do not use the app for anything TikTok prohibits.</p></article>
+        <article class="card"><h3>Who is it for?</h3><p>TikTok creators who publish regularly and want planning, drafting, and clipping in one local workspace — especially creators who repurpose long-form video into vertical clips, and creators who want to review the exact draft before anything goes out. It is built for one creator working on their own account, not for managing other people’s accounts.</p></article>
+        <article class="card"><h3>How do I uninstall it?</h3><p>Stop the stack, delete the Creator Stack Combo folder and its local data from your computer, and remove the app’s access in TikTok’s settings under authorized apps. Revoking access in TikTok stops the app from reaching your account even before you delete the local files. There is no hosted account to cancel, because there is no hosted account.</p></article>
+      </div>
+    </section>
+
+    <section style="padding-top:8px">
+      <p style="color:var(--muted); font-size:15px">Still have a question? <a href="support.html">Support</a> · <a href="contact.html">Contact us</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+    </section>
+
+  </div>
+</main>
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <p><strong style="color:var(--ink)">Creator Stack Combo</strong> · A local-first TikTok creator operations tool from the TIKTOK Manager Bot developer organization. Runs on the creator's own computer — drafts content for human approval and makes vertical clips with ClipForge.</p>
+      <p style="margin-top:8px">Contact: <a href="mailto:hello@creatorstackcombo.xyz">hello@creatorstackcombo.xyz</a></p>
+    </div>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="#top">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

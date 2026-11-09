@@ -1,0 +1,20 @@
+# Security headers for Cloudflare Pages and Netlify.
+# (GitHub Pages ignores this file, which is harmless.)
+# Place this file in site/ — it deploys automatically with the site.
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  # Content-Security-Policy: everything must come from this site — no
+  # external scripts, styles, images or fonts at all. This site currently
+  # uses inline styles (several pages use style="..." attributes, and
+  # terms.html / privacy.html have inline <style> blocks) and one inline
+  # <script> in terms.html (table-of-contents scroll-spy), so 'unsafe-inline'
+  # is allowed for style and script — but only for inline code from this
+  # same page, never for an external source. If the inline styles/script
+  # are ever moved into styles.css / a .js file, tighten this to:
+  #   Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'
+  # and do not add any external source.
+  Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="How Creator Stack Combo works: install in Docker on your own computer, connect TikTok with Login Kit, review drafts, and make clips with ClipForge." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Creator Stack Combo" />
+<meta property="og:title" content="How It Works — Creator Stack Combo" />
+<meta property="og:description" content="How Creator Stack Combo works: install in Docker on your own computer, connect TikTok with Login Kit, review drafts, and make clips with ClipForge." />
+<meta property="og:url" content="https://creatorstackcombo.xyz/how-it-works.html" />
+<meta property="og:image" content="icon-1024x1024.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How It Works — Creator Stack Combo" />
+<meta name="twitter:description" content="How Creator Stack Combo works: install in Docker on your own computer, connect TikTok with Login Kit, review drafts, and make clips with ClipForge." />
+<meta name="twitter:image" content="icon-1024x1024.png" />
+<link rel="icon" href="icon-1024x1024.png" type="image/png" />
+<title>How It Works — Creator Stack Combo</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Creator Stack Combo — home">
+      <span class="brand-mark" aria-hidden="true">CS</span>
+      <span class="brand-text">
+        <b>Creator Stack Combo</b>
+        <span>Local-first creator operations</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+      <a class="legal" href="terms.html">Terms of Service</a>
+      <a class="legal" href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <div class="hero" style="padding-bottom:0">
+      <p class="kicker"><i aria-hidden="true"></i> How it works</p>
+      <h1>From install to <span class="accent">first draft.</span></h1>
+      <p class="lede">Creator Stack Combo runs in Docker on the creator's own computer. There is no cloud account, no hosted dashboard, and no one else's server in the middle.</p>
+    </div>
+
+    <section aria-labelledby="steps-heading">
+      <div class="section-head">
+        <p class="eyebrow">Setup</p>
+        <h2 id="steps-heading">Five steps, all on your computer</h2>
+      </div>
+      <div class="steps-visual" aria-label="The short version: three steps">
+        <article class="step-card"><span class="step-num" aria-hidden="true">1</span><h3>Install it locally</h3><p>Unzip the stack, start Docker Desktop, and run the start script. It runs on your own computer.</p></article>
+        <article class="step-card"><span class="step-num" aria-hidden="true">2</span><h3>Connect TikTok</h3><p>Use “Connect TikTok” in the Observe panel and approve access on TikTok’s own sign-in page.</p></article>
+        <article class="step-card"><span class="step-num" aria-hidden="true">3</span><h3>Draft, clip &amp; review</h3><p>Ideas and clips land as drafts. You read, edit, and approve the exact content before anything goes further.</p></article>
+      </div>
+      <p class="steps-note">The short version above is the whole flow. The five detailed steps below spell out each part.</p>
+      <div class="flow" style="gap:18px">
+        <div class="flow-step"><span class="flow-num">1</span><div><b>Install Docker and the stack</b><p>Install Docker Desktop, unzip Creator Stack Combo, and run the included start script. It checks the folders, generates the stack's own secret keys, and starts the services in order.</p></div></div>
+        <div class="flow-step"><span class="flow-num">2</span><div><b>Start the local model (optional, recommended)</b><p>Install Ollama and pull the models the agent uses for drafting. Without a local model the agent still works, but drafts fall back to simpler built-in templates.</p></div></div>
+        <div class="flow-step"><span class="flow-num">3</span><div><b>Open the Observe panel</b><p>Open the panel in a browser on the same computer. It asks for the admin key once, then shows the agent's status, drafts, and the TikTok connection card.</p></div></div>
+        <div class="flow-step"><span class="flow-num">4</span><div><b>Connect TikTok with Login Kit</b><p>Use “Connect TikTok” in the panel. TikTok's own sign-in page opens, the creator logs in there and approves the permissions. The app never sees or stores the TikTok password.</p></div></div>
+        <div class="flow-step"><span class="flow-num">5</span><div><b>Review drafts, make clips</b><p>The agent starts researching trends and drafting on its own schedule. The creator reviews drafts in the approval queue and uses ClipForge to cut clips from long-form video.</p></div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="data-heading" style="padding-top:8px">
+      <div class="section-head">
+        <p class="eyebrow">Where your data lives</p>
+        <h2 id="data-heading">On your computer, not ours</h2>
+        <p>There is no Creator Stack Combo cloud. Drafts, clips, tokens, and logs live in folders on the creator's own machine.</p>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>TikTok tokens</dt><dd>Encrypted and stored <strong>locally only</strong>. They are never sent to any Creator Stack Combo server, because there isn't one.</dd></div>
+        <div class="fact"><dt>Drafts &amp; clips</dt><dd>Stored on the creator's computer. A draft is only a local file until the creator decides what to do with it.</dd></div>
+        <div class="fact"><dt>Sign-in</dt><dd>Happens only on TikTok's own pages, through Login Kit. The app never asks for a TikTok password.</dd></div>
+        <div class="fact"><dt>Revoking access</dt><dd>Any time, in TikTok's settings, under authorized apps — or by deleting the local token store. Both are described in the <a href="privacy.html">Privacy Policy</a>.</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="limits-heading" style="padding-top:8px">
+      <div class="band">
+        <h2 id="limits-heading">What the app will not do</h2>
+        <p>These limits are part of the product, and they are the same limits stated in the Terms of Service.</p>
+        <div class="band-grid">
+          <div>
+            <h3>It will not</h3>
+            <ul>
+              <li>Publish anything without the creator reviewing and approving the exact draft</li>
+              <li>Like, follow, comment, or send messages on its own</li>
+              <li>Buy followers, fake engagement, or run engagement pods</li>
+              <li>Scrape private profiles, direct messages, or sensitive personal data</li>
+            </ul>
+          </div>
+          <div>
+            <h3>It will</h3>
+            <ul>
+              <li>Research trends and draft content locally</li>
+              <li>Cut vertical clips from the creator's own video</li>
+              <li>Keep everything in an approval queue for the creator</li>
+              <li>Use TikTok's official APIs only, with the permissions the creator approved</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:18px; color:var(--muted); font-size:15px">Full details: <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="contact.html">Contact</a></p>
+    </section>
+
+  </div>
+</main>
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <p><strong style="color:var(--ink)">Creator Stack Combo</strong> · A local-first TikTok creator operations tool from the TIKTOK Manager Bot developer organization. Runs on the creator's own computer — drafts content for human approval and makes vertical clips with ClipForge.</p>
+      <p style="margin-top:8px">Contact: <a href="mailto:hello@creatorstackcombo.xyz">hello@creatorstackcombo.xyz</a></p>
+    </div>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="#top">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
