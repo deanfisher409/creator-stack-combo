@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Privacy Policy for Creator Stack Combo — how the app handles TikTok account data and other information when you connect and use it." />
+<link rel="icon" href="data:," />
+<title>Privacy Policy — Creator Stack Combo</title>
+<style>
+  :root{
+    --bg:#fcfcfb;
+    --surface:#ffffff;
+    --surface-2:#f4f4f1;
+    --ink:#17181a;
+    --ink-2:#4a4d52;
+    --ink-3:#6b6f76;
+    --line:#e6e6e1;
+    --line-strong:#d8d8d2;
+    --accent:#0f3d2e;
+    --accent-ink:#0f3d2e;
+    --accent-soft:#eaf2ed;
+    --amber-soft:#fdf6e3;
+    --radius:14px;
+    --max:780px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121413;
+      --surface:#1a1c1b;
+      --surface-2:#222524;
+      --ink:#f0f1ee;
+      --ink-2:#c8cbc6;
+      --ink-3:#9aa09a;
+      --line:#2c2f2d;
+      --line-strong:#3a3e3b;
+      --accent:#7ac5a6;
+      --accent-ink:#a8dcc4;
+      --accent-soft:#1e2f28;
+      --amber-soft:#2a2618;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: ui-sans-system, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-ink); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 22px 72px}
+
+  /* Header */
+  .topbar{
+    border-bottom:1px solid var(--line);
+    padding:18px 0 16px;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  .brand{display:flex; align-items:center; gap:12px}
+  .mark{
+    width:38px; height:38px; border-radius:9px; background:var(--ink); color:var(--bg);
+    display:grid; place-items:center; font-weight:800; font-size:13px; letter-spacing:.04em; flex:0 0 auto;
+  }
+  @media (prefers-color-scheme: dark){ .mark{background:#eef0ec; color:#141614} }
+  .brand strong{font-size:15px; letter-spacing:-.01em; line-height:1.1; display:block}
+  .brand span{font-size:13px; color:var(--ink-3); display:block; margin-top:2px}
+  .top-meta{font-size:13px; color:var(--ink-3); text-align:right; line-height:1.4}
+  .top-meta b{color:var(--ink-2); font-weight:600}
+
+  /* Title block */
+  .titleblock{padding:42px 0 8px}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-ink);
+    background:var(--accent-soft); border:1px solid var(--line); padding:6px 10px; border-radius:999px;
+  }
+  h1{
+    font-family: Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif;
+    font-size: clamp(38px, 6vw, 56px);
+    line-height:.95; letter-spacing:-.02em; font-weight:700;
+    margin:18px 0 14px;
+  }
+  .lede{font-size:19px; line-height:1.55; color:var(--ink-2); max-width:640px; margin:0}
+  .facts{
+    margin-top:26px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;
+  }
+  @media (max-width:640px){ .facts{grid-template-columns:1fr} .top-meta{text-align:left} }
+  .fact{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 15px}
+  .fact label{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); font-weight:700; display:block; margin-bottom:5px}
+  .fact p{margin:0; font-size:14.5px; line-height:1.45; color:var(--ink)}
+  .fact p small{color:var(--ink-2)}
+
+  /* Summary */
+  .summary{
+    margin-top:22px; background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--radius); padding:20px 20px 18px;
+  }
+  .summary h2{font-size:15px; margin:0 0 10px; letter-spacing:-.01em}
+  .summary ul{margin:0; padding:0; list-style:none; display:grid; gap:9px}
+  .summary li{display:flex; gap:10px; font-size:15px; line-height:1.5; color:var(--ink-2)}
+  .summary li::before{content:"✓"; color:var(--accent-ink); font-weight:800; flex:0 0 auto; margin-top:1px}
+  .summary li b{color:var(--ink); font-weight:650}
+
+  /* TOC */
+  .toc{margin:28px 0 6px; padding:18px 0 0; border-top:1px solid var(--line)}
+  .toc p{font-size:12px; letter-spacing:.11em; text-transform:uppercase; font-weight:700; color:var(--ink-3); margin:0 0 12px}
+  .toc ol{columns:2; column-gap:28px; margin:0; padding-left:20px; font-size:14.5px; line-height:1.9}
+  @media (max-width:560px){ .toc ol{columns:1} }
+  .toc a{color:var(--ink-2); text-decoration:none}
+  .toc a:hover{color:var(--ink); text-decoration:underline}
+
+  /* Body copy */
+  section{padding:30px 0 2px; border-top:1px solid var(--line); margin-top:28px; scroll-margin-top:20px}
+  section:first-of-type{border-top:none}
+  .num{font-size:12px; font-weight:800; letter-spacing:.1em; color:var(--accent-ink); text-transform:uppercase}
+  h2.sec{
+    font-family: Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif;
+    font-size:28px; line-height:1.1; letter-spacing:-.015em; margin:7px 0 12px; font-weight:700;
+  }
+  h3{font-size:16.5px; margin:22px 0 7px; letter-spacing:-.01em}
+  p{margin:0 0 12px; color:var(--ink-2)}
+  p strong, li strong{color:var(--ink)}
+  ul, ol.body{margin:8px 0 14px; padding-left:22px; color:var(--ink-2)}
+  li{margin:5px 0}
+  li::marker{color:var(--ink-3)}
+
+  .tablewrap{overflow:hidden; border:1px solid var(--line); border-radius:12px; margin:14px 0 16px; background:var(--surface)}
+  table{width:100%; border-collapse:collapse; font-size:14.5px; text-align:left}
+  thead th{background:var(--surface-2); color:var(--ink); font-size:12px; letter-spacing:.07em; text-transform:uppercase; padding:11px 14px; border-bottom:1px solid var(--line)}
+  tbody td{padding:12px 14px; vertical-align:top; border-bottom:1px solid var(--line); color:var(--ink-2); line-height:1.5}
+  tbody tr:last-child td{border-bottom:none}
+  tbody td:first-child{font-weight:650; color:var(--ink); width:31%}
+  @media (max-width:620px){
+    thead{display:none}
+    tbody td{display:block; width:100% !important; padding:10px 14px; border-bottom:none}
+    tbody td:first-child{padding-bottom:2px}
+    tbody tr{border-bottom:1px solid var(--line); padding:4px 0}
+    tbody tr:last-child{border-bottom:none}
+  }
+
+  .callout{
+    background:var(--amber-soft); border:1px solid var(--line); border-radius:12px; padding:15px 16px; margin:16px 0;
+    font-size:15px; line-height:1.55; color:var(--ink-2);
+  }
+  .callout b{color:var(--ink)}
+  .callout.green{background:var(--accent-soft)}
+  code{
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.88em;
+    background:var(--surface-2); border:1px solid var(--line); padding:1px 6px; border-radius:6px; color:var(--ink); word-break:break-all;
+  }
+
+  footer{
+    margin-top:44px; padding-top:22px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    font-size:13.5px; color:var(--ink-3); line-height:1.6;
+  }
+  footer strong{color:var(--ink-2)}
+  .print-note{font-size:13px; color:var(--ink-3); margin-top:10px}
+  @media print{
+    body{background:#fff; color:#111} .wrap{max-width:none}
+    a{color:#111} .summary,.fact,.tablewrap{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">CS</div>
+      <div>
+        <strong>Creator Stack Combo</strong>
+        <span>TIKTOK Manager Bot</span>
+      </div>
+    </div>
+    <div class="top-meta">
+      <b>Privacy Policy</b><br>
+      Last updated: November 8, 2026
+    </div>
+  </header>
+
+  <div class="titleblock">
+    <span class="kicker">Public policy · Creator Stack Combo only</span>
+    <h1>Privacy Policy</h1>
+    <p class="lede">How Creator Stack Combo handles your TikTok account data and the content you give it — in plain language, with no sale of data and no hidden tracking.</p>
+
+    <div class="facts" aria-label="Key facts">
+      <div class="fact">
+        <label>App</label>
+        <p>Creator Stack Combo<br><small>Operated under the organization<br>TIKTOK Manager Bot</small></p>
+      </div>
+      <div class="fact">
+        <label>How it runs</label>
+        <p>Local-first, single operator<br><small>Runs on the operator’s own computer. Not a public multi-user service.</small></p>
+      </div>
+      <div class="fact">
+        <label>Effective date</label>
+        <p>November 8, 2026<br><small>Applies from the date above until replaced by a newer version on this page.</small></p>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h2>The short version</h2>
+      <ul>
+        <li><span><b>We only use TikTok data you authorize.</b> When you connect TikTok, we receive the profile, stats, and video information covered by the permissions you approve.</span></li>
+        <li><span><b>Your data stays with the operator.</b> Tokens and account data are stored locally on the operator’s device, not sold and not shared with advertisers or data brokers.</span></li>
+        <li><span><b>Publishing is an operator action.</b> If the <code>video.publish</code> permission is granted, the app can upload or publish only content the operator selects for that purpose.</span></li>
+        <li><span><b>You can disconnect at any time.</b> Revoke access in your TikTok settings and delete the local copy of your data from the operator’s device.</span></li>
+      </ul>
+    </div>
+
+    <nav class="toc" aria-label="Contents">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#who">Who operates this app</a></li>
+        <li><a href="#collect">Information we collect</a></li>
+        <li><a href="#tiktok">TikTok data in detail</a></li>
+        <li><a href="#use">How we use information</a></li>
+        <li><a href="#sharing">Sharing &amp; disclosure</a></li>
+        <li><a href="#storage">Storage, security &amp; retention</a></li>
+        <li><a href="#controls">Your controls &amp; choices</a></li>
+        <li><a href="#cookies">Cookies &amp; tracking</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="who">
+    <div class="num">01 — Overview</div>
+    <h2 class="sec">Who operates this app</h2>
+    <p><strong>Creator Stack Combo</strong> is a creator-operations tool operated under the TikTok developer organization <strong>TIKTOK Manager Bot</strong>. It brings together local tools for researching trends, drafting and clipping video, planning content, and — when a TikTok account is connected and authorized — reading account information and publishing video through TikTok’s official APIs.</p>
+    <p>This policy covers <strong>Creator Stack Combo only</strong>. It does not cover TikTok itself, or any other app, website, or service you use alongside it. TikTok’s own privacy policy and terms apply to your use of TikTok.</p>
+    <p>Creator Stack Combo is not owned, endorsed, or operated by TikTok. References to TikTok are only to describe the integration you authorize.</p>
+    <div class="callout green"><b>Single-operator design:</b> The app is built to be run by one operator on their own computer for accounts they are authorized to operate. It is not offered as a public service where strangers create accounts and store data on a shared server.</div>
+  </section>
+
+  <section id="collect">
+    <div class="num">02 — Collection</div>
+    <h2 class="sec">Information we collect</h2>
+    <p>We collect only what is needed to run the features you use. The categories are:</p>
+
+    <h3>a) Information you provide directly</h3>
+    <ul>
+      <li>Video, audio, images, captions, and text you import, create, or select inside the app for clipping, drafting, or publishing.</li>
+      <li>Notes, content plans, calendars, drafts, and settings you create while using the app.</li>
+      <li>API keys and configuration you enter locally to enable optional integrations you choose to use. Those keys are stored on your device — see Section 6.</li>
+    </ul>
+
+    <h3>b) Information from TikTok, with your authorization</h3>
+    <p>Covered in detail in Section 3 below.</p>
+
+    <h3>c) Local technical and log information</h3>
+    <ul>
+      <li>Basic operating logs generated on the operator’s device — for example, whether a sync or publish request succeeded, timestamps, and error messages — used to diagnose problems.</li>
+      <li>Device and app configuration needed for the app to run locally, such as local file paths and feature settings.</li>
+    </ul>
+    <p>We do <strong>not</strong> collect passwords for your TikTok account. Sign-in happens on TikTok’s site through TikTok Login Kit / OAuth, and TikTok returns an access token to the app.</p>
+  </section>
+
+  <section id="tiktok">
+    <div class="num">03 — TikTok integration</div>
+    <h2 class="sec">TikTok data in detail</h2>
+    <p>When — and only when — you click <strong>Connect TikTok</strong> and approve the request on TikTok, TikTok shares data with the app according to the scopes you granted. The app is designed to request the following scopes:</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Scope</th><th>What it can include</th><th>Why the app uses it</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>user.info.basic</code></td>
+            <td>Open ID, avatar image, and display name for the connected account.</td>
+            <td>To identify which account is connected and show it correctly in the app.</td>
+          </tr>
+          <tr>
+            <td><code>user.info.profile</code></td>
+            <td>Public profile information such as username, bio, profile links, and verification status, as returned by TikTok.</td>
+            <td>To display the connected profile and plan content for the correct account.</td>
+          </tr>
+          <tr>
+            <td><code>user.info.stats</code></td>
+            <td>Account statistics such as follower, following, like, and video counts, as returned by TikTok.</td>
+            <td>To show account performance context in the operator’s dashboard.</td>
+          </tr>
+          <tr>
+            <td><code>video.list</code></td>
+            <td>A list of the connected account’s videos and associated metadata returned by TikTok.</td>
+            <td>To let the operator review their own content and performance inside the app.</td>
+          </tr>
+          <tr>
+            <td><code>video.publish</code></td>
+            <td>Permission to upload and publish video to the connected account through TikTok’s Content Posting API. This scope does not itself provide additional profile data.</td>
+            <td>To publish video that the operator has selected and prepared in the app, to their own connected account.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Access tokens &amp; refresh tokens:</strong> TikTok issues tokens after you authorize the app. Those tokens are stored locally on the operator’s device so the app can make the API calls you requested without asking you to sign in every time. Tokens are not posted publicly and are not shared with advertisers.</p>
+    <p><strong>What we do not do with TikTok data:</strong> We do not scrape private profiles, read your direct messages, collect data about other people’s accounts beyond what TikTok’s API returns for the connected account, buy followers or engagement, or use TikTok data to build advertising profiles for third parties.</p>
+    <p><strong>Scope changes:</strong> If TikTok grants fewer scopes than requested, or you approve only some scopes, the app will only access what was actually granted. Features that need a missing scope will not work until it is granted.</p>
+  </section>
+
+  <section id="use">
+    <div class="num">04 — Use</div>
+    <h2 class="sec">How we use information</h2>
+    <p>We use the information above only to operate Creator Stack Combo for the connected account, including to:</p>
+    <ul>
+      <li>Show the connected TikTok account, its profile, stats, and video list to the operator;</li>
+      <li>Research trends, draft captions and content ideas, and plan a content calendar;</li>
+      <li>Create, clip, and prepare video and related drafts from content the operator provides;</li>
+      <li>Upload or publish video to TikTok when the operator directs the app to do so and the <code>video.publish</code> scope has been granted;</li>
+      <li>Keep a local performance and activity log so the operator can review what was drafted, scheduled, or published;</li>
+      <li>Maintain, troubleshoot, and secure the app, and comply with TikTok’s Developer Terms and applicable law.</li>
+    </ul>
+    <p>We do not use your TikTok data for third-party advertising, to sell personal information, or to make decisions about people other than operating the connected creator account at the operator’s direction.</p>
+  </section>
+
+  <section id="sharing">
+    <div class="num">05 — Sharing</div>
+    <h2 class="sec">Sharing &amp; disclosure</h2>
+    <p><strong>We do not sell your personal information.</strong> We do not share TikTok account data with data brokers, advertising networks, or engagement services.</p>
+    <p>Information may be shared only in these limited cases:</p>
+    <ul>
+      <li><strong>With TikTok</strong> — to complete the actions you authorize, such as fetching your profile or publishing a video through TikTok’s APIs.</li>
+      <li><strong>With service tools you enable locally</strong> — if the operator chooses to enable an optional tool or model provider inside their own setup, only the content needed for that feature is sent to that tool, under that tool’s own terms. No TikTok access token is sent to those tools.</li>
+      <li><strong>For legal reasons</strong> — if required by law, court order, or to protect the rights, safety, or security of the operator, the account holder, or others.</li>
+      <li><strong>At your direction</strong> — if you explicitly ask the operator to export, share, or publish specific content or information.</li>
+    </ul>
+    <p>Content you publish to TikTok becomes subject to TikTok’s terms and your TikTok privacy settings once published. This policy cannot control how viewers on TikTok interact with public content.</p>
+  </section>
+
+  <section id="storage">
+    <div class="num">06 — Storage &amp; retention</div>
+    <h2 class="sec">Storage, security &amp; retention</h2>
+    <h3>Where data is stored</h3>
+    <p>Creator Stack Combo is <strong>local-first</strong>. Connected-account data, drafts, logs, and configuration are stored on the operator’s own computer — in the app’s local files and database on that device — rather than on a shared public server operated for this policy page. This public page itself stores no account data.</p>
+    <h3>Security measures</h3>
+    <ul>
+      <li>TikTok sign-in is handled by TikTok; the app never asks for or stores your TikTok password.</li>
+      <li>Access and refresh tokens are kept in the operator’s local configuration and should be protected like passwords. The operator is responsible for securing the device and its local <code>.env</code> / configuration files.</li>
+      <li>Access to the local operator panel is restricted by an admin key controlled by the operator.</li>
+      <li>No method of storage or transmission is completely secure. If the operator’s device is lost, shared, or compromised, locally stored data could be at risk.</li>
+    </ul>
+    <h3>How long we keep it</h3>
+    <ul>
+      <li><strong>TikTok tokens:</strong> Kept locally until they expire, are revoked on TikTok, or the operator disconnects the account or deletes the local data.</li>
+      <li><strong>Profile, stats, and video list data:</strong> Kept locally while the account is connected so the dashboard can function, and refreshed on sync. The operator can delete the local copy at any time.</li>
+      <li><strong>Drafts, clips, and logs the operator creates:</strong> Kept until the operator deletes them.</li>
+    </ul>
+    <p>When the operator deletes local data or removes the app, the local copies are removed from that device. Copies already published to TikTok remain on TikTok until removed there.</p>
+  </section>
+
+  <section id="controls">
+    <div class="num">07 — Your choices</div>
+    <h2 class="sec">Your controls &amp; choices</h2>
+    <ul>
+      <li><strong>Don’t connect:</strong> You can use local drafting and clipping features without connecting a TikTok account. No TikTok data is collected until you authorize a connection.</li>
+      <li><strong>Revoke TikTok access:</strong> Go to your TikTok account settings and remove Creator Stack Combo’s access. That stops future API access using that authorization. You should also ask the operator to delete any local copy already stored.</li>
+      <li><strong>Delete local data:</strong> Ask the operator to delete the connected account’s local records, drafts, and tokens, or — if you are the operator — delete them directly from the device where the app is installed and remove the app’s local configuration.</li>
+      <li><strong>Correct your profile:</strong> Profile information originates from TikTok. Correct it in TikTok, then re-sync in the app.</li>
+      <li><strong>Remove published content:</strong> Delete or change the privacy settings of published videos directly in TikTok.</li>
+    </ul>
+    <div class="callout"><b>If you are not the operator:</b> Creator Stack Combo is run by a single operator for accounts they are authorized to manage. If your account was connected and you want access revoked or local data deleted, contact the operator who connected it and revoke access in TikTok as described above — revoking in TikTok takes effect even if the operator has not yet deleted the local copy.</div>
+  </section>
+
+  <section id="cookies">
+    <div class="num">08 — Cookies</div>
+    <h2 class="sec">Cookies &amp; tracking</h2>
+    <p>This Privacy Policy page does not set advertising or analytics tracking cookies and does not embed third-party trackers. The locally installed Creator Stack Combo app does not use cookies to track you across other websites. Any session or sign-in cookies set by TikTok when you authorize the connection are set and governed by TikTok.</p>
+  </section>
+
+  <section id="children">
+    <div class="num">09 — Children</div>
+    <h2 class="sec">Children</h2>
+    <p>Creator Stack Combo is a creator-operations tool for account holders who are permitted to use TikTok and to authorize developer apps under TikTok’s terms. It is not directed to children, and the operator should not connect an account or submit content in violation of TikTok’s age and eligibility rules.</p>
+  </section>
+
+  <section id="changes">
+    <div class="num">10 — Changes</div>
+    <h2 class="sec">Changes to this policy</h2>
+    <p>If this policy changes in a material way — for example, if the app requests a new TikTok scope or uses data for a new purpose — the updated policy will be posted on this page with a new “Last updated” date. Continued use of the connected integration after an update means the updated policy applies to that use. Where a new TikTok permission is required, the app will ask for that authorization through TikTok rather than assuming it.</p>
+  </section>
+
+  <section id="contact">
+    <div class="num">11 — Contact</div>
+    <h2 class="sec">Contact</h2>
+    <p>Questions about this policy or about data held by a Creator Stack Combo installation should be directed to <strong>the operator of that installation</strong> — the person who installed the app and connected the TikTok account under the organization <strong>TIKTOK Manager Bot</strong>.</p>
+    <p>If you authorized this app for your TikTok account, the fastest way to limit further access is to revoke Creator Stack Combo in your TikTok settings right away, then follow up with the operator about deleting the local copy of your data as described in Section 7.</p>
+    <p>For questions about how TikTok itself handles your data, see TikTok’s own Privacy Policy in the TikTok app or on TikTok’s website.</p>
+  </section>
+
+  <footer>
+    <div>
+      <strong>Creator Stack Combo</strong><br>
+      Organization: TIKTOK Manager Bot<br>
+      Privacy Policy — Last updated November 8, 2026
+    </div>
+    <div>
+      This page is the public Privacy Policy<br>
+      for Creator Stack Combo only.
+    </div>
+  </footer>
+  <p class="print-note">This policy describes the local-first installation described above. If an installation is changed to host data on a shared server or add new integrations, this policy must be updated before that change is used with a connected TikTok account.</p>
+
+</div>
+</body>
+</html>

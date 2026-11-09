@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Creator Stack Combo is a local-first TikTok creator operations tool that runs on the creator's own computer. It connects the creator's own TikTok account with Login Kit, drafts content for human approval, and makes vertical clips with ClipForge." />
+<link rel="icon" href="data:," />
+<title>Creator Stack Combo — Local-First TikTok Creator Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f7f7f4;
+    --surface:#ffffff;
+    --surface-2:#efefea;
+    --ink:#111110;
+    --ink-2:#3f3f3a;
+    --muted:#6b6b64;
+    --line:#dddcd4;
+    --cyan:#00c9c0;
+    --cyan-soft:#d9f6f3;
+    --pink:#fe2c55;
+    --pink-soft:#ffe3e9;
+    --black:#111110;
+    --on-black:#f7f7f4;
+    --on-black-muted:#b8b8b0;
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121211;
+      --surface:#1c1c1a;
+      --surface-2:#232320;
+      --ink:#f2f2ec;
+      --ink-2:#d6d6cc;
+      --muted:#a3a39a;
+      --line:#33332e;
+      --cyan-soft:#123a38;
+      --pink-soft:#3d1a24;
+      --black:#f2f2ec;
+      --on-black:#121211;
+      --on-black-muted:#55554e;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--cyan); outline-offset:3px; border-radius:6px}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 20px}
+  .mono{font-family:"IBM Plex Mono", ui-monospace, monospace}
+
+  /* Top bar */
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none; min-width:0}
+  .brand-mark{
+    width:38px; height:38px; flex:0 0 38px; border-radius:10px;
+    background:var(--ink); color:var(--bg);
+    display:grid; place-items:center;
+    font-family:"Archivo", sans-serif; font-weight:900; font-size:15px; letter-spacing:-.02em;
+    position:relative; overflow:hidden;
+  }
+  .brand-mark::after{content:""; position:absolute; right:0; top:0; width:10px; height:10px; background:var(--pink); border-bottom-left-radius:8px}
+  .brand-text b{font-family:"Archivo", sans-serif; font-size:16px; letter-spacing:-.01em; display:block; line-height:1.1; white-space:nowrap}
+  .brand-text span{font-size:12.5px; color:var(--muted); display:block; line-height:1.2; white-space:nowrap}
+  .nav{display:flex; gap:4px; flex-wrap:wrap; justify-content:flex-end}
+  .nav a{
+    text-decoration:none; font-size:14px; font-weight:600; color:var(--ink-2);
+    padding:8px 11px; border-radius:999px;
+  }
+  .nav a:hover{background:var(--surface-2); color:var(--ink)}
+  .nav a.legal{border:1px solid var(--line); background:var(--surface)}
+  @media (max-width:640px){
+    .brand-text span{display:none}
+    .topbar-inner{flex-wrap:wrap}
+    .nav a{padding:7px 8px; font-size:13px}
+    .nav a.hide-sm{display:none}
+  }
+
+  /* Hero */
+  .hero{padding:56px 0 10px}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"IBM Plex Mono", monospace; font-size:12.5px; font-weight:600;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2);
+    border:1px solid var(--line); background:var(--surface); border-radius:999px; padding:7px 12px;
+  }
+  .kicker i{width:8px; height:8px; border-radius:50%; background:var(--cyan); display:inline-block}
+  h1{
+    font-family:"Archivo", sans-serif; font-weight:900; letter-spacing:-.035em;
+    font-size:clamp(2.5rem, 6.5vw, 4.4rem); line-height:.98; margin:20px 0 18px; max-width:12ch;
+  }
+  h1 .accent{color:var(--pink)}
+  .lede{font-size:clamp(1.05rem, 2.4vw, 1.3rem); line-height:1.55; color:var(--ink-2); max-width:38em; margin:0}
+  .lede strong{color:var(--ink)}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+    font-weight:700; font-size:15px; padding:13px 18px; border-radius:12px; border:1px solid var(--ink);
+  }
+  .btn-primary{background:var(--ink); color:var(--bg)}
+  .btn-primary:hover{opacity:.88}
+  .btn-ghost{background:var(--surface); color:var(--ink); border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .hero-note{margin-top:14px; font-size:13.5px; color:var(--muted)}
+
+  /* Stack diagram */
+  .diagram{
+    margin:36px 0 8px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px; display:grid; grid-template-columns:1.15fr .85fr; gap:20px;
+  }
+  @media (max-width:760px){ .diagram{grid-template-columns:1fr} }
+  .diagram-title{font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 14px}
+  .stack{display:grid; gap:10px}
+  .layer{
+    border:1px solid var(--line); border-radius:12px; padding:13px 14px; display:flex; gap:12px; align-items:flex-start; background:var(--bg);
+  }
+  .layer .dot{width:10px; height:10px; border-radius:50%; margin-top:7px; flex:0 0 10px}
+  .layer b{display:block; font-size:15px; line-height:1.3}
+  .layer p{margin:2px 0 0; font-size:13.5px; color:var(--muted); line-height:1.45}
+  .flow{display:grid; gap:10px; align-content:start}
+  .flow-step{display:flex; gap:12px; align-items:flex-start}
+  .flow-num{
+    width:28px; height:28px; flex:0 0 28px; border-radius:50%; background:var(--ink); color:var(--bg);
+    display:grid; place-items:center; font-family:"IBM Plex Mono", monospace; font-size:13px; font-weight:600;
+  }
+  .flow-step b{display:block; font-size:15px; line-height:1.3}
+  .flow-step p{margin:2px 0 0; font-size:13.5px; color:var(--muted); line-height:1.45}
+
+  section{padding:44px 0}
+  .section-head{max-width:42em; margin-bottom:22px}
+  .section-head h2{font-family:"Archivo", sans-serif; font-weight:800; letter-spacing:-.025em; font-size:clamp(1.6rem, 3.6vw, 2.2rem); line-height:1.08; margin:0 0 10px}
+  .section-head p{margin:0; color:var(--ink-2)}
+  .eyebrow{font-family:"IBM Plex Mono", monospace; font-size:12px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--pink); margin:0 0 10px}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:760px){ .grid{grid-template-columns:1fr} }
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+  .card h3{margin:0 0 8px; font-size:18px; line-height:1.3; letter-spacing:-.01em}
+  .card p{margin:0; color:var(--ink-2); font-size:15.5px}
+  .card p + p{margin-top:10px}
+  .tag{
+    display:inline-block; font-family:"IBM Plex Mono", monospace; font-size:11.5px; font-weight:600;
+    letter-spacing:.06em; text-transform:uppercase; padding:5px 9px; border-radius:999px; margin-bottom:14px;
+  }
+  .tag-cyan{background:var(--cyan-soft); color:var(--ink)}
+  .tag-pink{background:var(--pink-soft); color:var(--ink)}
+
+  /* Dark band */
+  .band{background:var(--black); color:var(--on-black); border-radius:24px; padding:32px 26px; margin:8px 0}
+  .band h2{font-family:"Archivo", sans-serif; font-weight:800; letter-spacing:-.025em; font-size:clamp(1.5rem, 3.4vw, 2rem); line-height:1.1; margin:0 0 12px}
+  .band p{color:var(--on-black-muted); margin:0; max-width:44em}
+  @media (prefers-color-scheme: dark){ .band p{color:#3d3d38} .band{border:1px solid var(--line)} }
+  .band-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:22px}
+  @media (max-width:760px){ .band-grid{grid-template-columns:1fr} }
+  .band ul{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+  .band li{display:flex; gap:10px; font-size:15px; line-height:1.5}
+  .band li::before{content:"—"; opacity:.55; flex:0 0 auto}
+  .band h3{margin:0 0 12px; font-size:15px; font-family:"IBM Plex Mono", monospace; letter-spacing:.07em; text-transform:uppercase; font-weight:600}
+
+  /* Facts table */
+  .facts{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+  .fact{display:grid; grid-template-columns:190px 1fr; gap:16px; padding:16px 20px; border-top:1px solid var(--line)}
+  .fact:first-child{border-top:0}
+  .fact dt{font-family:"IBM Plex Mono", monospace; font-size:12.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding-top:3px}
+  .fact dd{margin:0; font-size:15.5px; color:var(--ink-2)}
+  .fact dd strong{color:var(--ink)}
+  @media (max-width:640px){ .fact{grid-template-columns:1fr; gap:4px} }
+
+  /* Legal */
+  .legal-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:760px){ .legal-grid{grid-template-columns:1fr} }
+  .legal-card{
+    display:block; text-decoration:none; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px;
+  }
+  .legal-card:hover{border-color:var(--ink)}
+  .legal-card h3{margin:0 0 8px; font-size:20px; font-family:"Archivo", sans-serif; letter-spacing:-.015em}
+  .legal-card p{margin:0 0 16px; color:var(--ink-2); font-size:15px}
+  .legal-card .go{font-weight:700; font-size:14.5px; display:inline-flex; gap:8px; align-items:center}
+  .legal-card .go span{transition:transform .15s ease}
+  .legal-card:hover .go span{transform:translateX(3px)}
+  @media (prefers-reduced-motion: reduce){ .legal-card .go span{transition:none} html{scroll-behavior:auto} }
+
+  footer{border-top:1px solid var(--line); padding:28px 0 40px; margin-top:10px}
+  .footer-inner{display:flex; flex-wrap:wrap; gap:14px 24px; align-items:flex-start; justify-content:space-between}
+  footer p{margin:0; color:var(--muted); font-size:13.5px; max-width:52em}
+  .footer-links{display:flex; gap:16px; flex-wrap:wrap}
+  .footer-links a{font-size:14px; font-weight:600; text-decoration:none}
+  .footer-links a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top" aria-label="Creator Stack Combo — home">
+      <span class="brand-mark" aria-hidden="true">CS</span>
+      <span class="brand-text">
+        <b>Creator Stack Combo</b>
+        <span>Local-first creator operations</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="#what-it-does" class="hide-sm">What it does</a>
+      <a href="#how-it-works" class="hide-sm">How it works</a>
+      <a href="#app-details" class="hide-sm">App details</a>
+      <a class="legal" href="https://muse.ai/s/creator-stack-combo-terms-of-service-xaxq6gxkxsn2lxgi/wHeBvDSKIgtvSjLBSz9UdrkwGeqfsAhQEh3QuNXaMcU">Terms of Service</a>
+      <a class="legal" href="https://muse.ai/s/creator-stack-combo-privacy-policy-xdj6gxkxrxyrxq5xp/2LU01JxFZ2MaMsN_2jXFqgLLKfjShMWuhoKWii_Z5Fs">Privacy Policy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <!-- HERO -->
+    <div class="hero">
+      <p class="kicker"><i aria-hidden="true"></i> Runs on your own computer · Not a hosted service</p>
+      <h1>Your TikTok workflow, <span class="accent">on your machine.</span></h1>
+      <p class="lede">
+        <strong>Creator Stack Combo</strong> is a local-first TikTok creator operations tool.
+        It runs on the creator's own computer, connects the creator's <strong>own TikTok account</strong>
+        through TikTok Login Kit, drafts content for <strong>human approval</strong>, and makes
+        vertical clips with <strong>ClipForge</strong> — so planning, clipping, and review happen
+        in one place the creator controls.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#how-it-works">How it works</a>
+        <a class="btn btn-ghost" href="https://muse.ai/s/creator-stack-combo-privacy-policy-xdj6gxkxrxyrxq5xp/2LU01JxFZ2MaMsN_2jXFqgLLKfjShMWuhoKWii_Z5Fs">Read the Privacy Policy</a>
+        <a class="btn btn-ghost" href="https://muse.ai/s/creator-stack-combo-terms-of-service-xaxq6gxkxsn2lxgi/wHeBvDSKIgtvSjLBSz9UdrkwGeqfsAhQEh3QuNXaMcU">Read the Terms of Service</a>
+      </div>
+      <p class="hero-note">This is the public website for the Creator Stack Combo app, in the TikTok developer organization <span class="mono">TIKTOK Manager Bot</span>.</p>
+
+      <!-- DIAGRAM -->
+      <div class="diagram" aria-label="How Creator Stack Combo is put together">
+        <div>
+          <p class="diagram-title">On the creator's computer</p>
+          <div class="stack">
+            <div class="layer">
+              <span class="dot" style="background:var(--cyan)" aria-hidden="true"></span>
+              <div><b>Creator operations agent</b><p>Research, drafts, calendar, and an approval queue. Nothing is published from a draft on its own — drafts wait for the creator to review them.</p></div>
+            </div>
+            <div class="layer">
+              <span class="dot" style="background:var(--pink)" aria-hidden="true"></span>
+              <div><b>ClipForge</b><p>Turns long-form video into vertical 9:16 clips sized for TikTok, with captions, ready for the creator to review.</p></div>
+            </div>
+            <div class="layer">
+              <span class="dot" style="background:var(--ink)" aria-hidden="true"></span>
+              <div><b>TikTok connection — Login Kit</b><p>Official TikTok sign-in. The creator logs in with their own account and grants the permissions the app requests. No password is ever entered into Creator Stack Combo itself.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="flow">
+          <p class="diagram-title">In plain order</p>
+          <div class="flow-step"><span class="flow-num">1</span><div><b>Install it locally</b><p>The stack runs in Docker on the creator's own Mac, Windows, or Linux computer. There is no Creator Stack Combo cloud account to sign up for.</p></div></div>
+          <div class="flow-step"><span class="flow-num">2</span><div><b>Connect TikTok</b><p>Use “Connect TikTok” and approve access on TikTok's own sign-in page, via Login Kit.</p></div></div>
+          <div class="flow-step"><span class="flow-num">3</span><div><b>Draft, clip, review</b><p>Ideas and clips land as drafts. The creator reads, edits, and approves the exact content before anything goes any further.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT IT DOES -->
+    <section id="what-it-does" aria-labelledby="what-heading">
+      <div class="section-head">
+        <p class="eyebrow">What it does</p>
+        <h2 id="what-heading">Four jobs, all local</h2>
+        <p>Creator Stack Combo brings the everyday work around a TikTok account together on one computer, instead of scattering it across hosted dashboards.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="tag tag-cyan">Local-first</span>
+          <h3>Runs on the creator's own computer</h3>
+          <p>The agent, clip maker, and dashboards run locally in Docker. The creator's working files, drafts, and clips live on their machine — not on a Creator Stack Combo server, because there isn't one.</p>
+        </article>
+        <article class="card">
+          <span class="tag tag-pink">Login Kit</span>
+          <h3>Connects the creator's own account</h3>
+          <p>The app uses TikTok Login Kit to connect the account of the person running it. It only operates an account that person has explicitly connected and authorized, through TikTok's official sign-in flow.</p>
+        </article>
+        <article class="card">
+          <span class="tag tag-cyan">Drafts first</span>
+          <h3>Drafts content for human approval</h3>
+          <p>Captions, ideas, and posting plans are prepared as drafts in an approval queue. The creator reviews the exact draft — wording, clip, and all — before deciding what happens next.</p>
+        </article>
+        <article class="card">
+          <span class="tag tag-pink">ClipForge</span>
+          <h3>Makes vertical clips with ClipForge</h3>
+          <p>ClipForge takes long-form video and renders vertical 9:16 clips for TikTok, with captions burned in. Finished clips come back as drafts for the same review step, not as finished posts.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS / BOUNDARIES -->
+    <section id="how-it-works" aria-labelledby="how-heading" style="padding-top:8px">
+      <div class="band">
+        <h2 id="how-heading">Built around the creator's say-so</h2>
+        <p>Creator Stack Combo is a tool for one creator working on their own account. Its limits are part of the design, and they're stated here so there's no ambiguity about what the app is for.</p>
+        <div class="band-grid">
+          <div>
+            <h3>It does</h3>
+            <ul>
+              <li>Connect one creator's own TikTok account with Login Kit, with the permissions that creator approves on TikTok</li>
+              <li>Research trends and prepare content drafts, calendars, and clip ideas locally</li>
+              <li>Cut vertical clips from the creator's own long-form video with ClipForge</li>
+              <li>Keep drafts in an approval queue for the creator to review and edit</li>
+            </ul>
+          </div>
+          <div>
+            <h3>It does not</h3>
+            <ul>
+              <li>Create TikTok accounts, profiles, or personas for anyone</li>
+              <li>Operate an account that hasn't been connected and authorized by its owner</li>
+              <li>Buy followers, fake engagement, or run engagement pods</li>
+              <li>Collect TikTok passwords — sign-in happens only on TikTok's own pages</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APP DETAILS FOR TIKTOK REVIEW / COPY-PASTE -->
+    <section id="app-details" aria-labelledby="details-heading">
+      <div class="section-head">
+        <p class="eyebrow">App details</p>
+        <h2 id="details-heading">For the TikTok app listing</h2>
+        <p>The facts about this app, in one place — details prepared for its TikTok developer app listing.</p>
+      </div>
+      <dl class="facts">
+        <div class="fact">
+          <dt>App name</dt>
+          <dd><strong>Creator Stack Combo</strong></dd>
+        </div>
+        <div class="fact">
+          <dt>Organization</dt>
+          <dd><strong>TIKTOK Manager Bot</strong> — TikTok developer organization</dd>
+        </div>
+        <div class="fact">
+          <dt>Short description</dt>
+          <dd>Local-first TikTok creator operations tool that runs on your own computer: connect your own account with Login Kit, draft content for your approval, and make vertical clips with ClipForge.</dd>
+        </div>
+        <div class="fact">
+          <dt>Category</dt>
+          <dd>Productivity — creator tools for planning, drafting, and clipping TikTok content</dd>
+        </div>
+        <div class="fact">
+          <dt>Platforms</dt>
+          <dd>Desktop — macOS, Windows, and Linux, running locally in Docker on the creator's own computer. Not a hosted web service and not a mobile app.</dd>
+        </div>
+        <div class="fact">
+          <dt>TikTok integration</dt>
+          <dd><strong>Login Kit</strong> — the creator signs in on TikTok and authorizes their own account. The app requests only the scopes it needs for the connected creator to view their account and prepare content.</dd>
+        </div>
+        <div class="fact">
+          <dt>How content is handled</dt>
+          <dd>Content is prepared as <strong>drafts for human approval</strong>. Clips are made locally with ClipForge. Working data stays on the creator's computer — see the Privacy Policy for exactly what is accessed and where it is stored.</dd>
+        </div>
+        <div class="fact">
+          <dt>Website</dt>
+          <dd>This page is the app's public website.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- LEGAL -->
+    <section id="legal" aria-labelledby="legal-heading" style="padding-top:8px">
+      <div class="section-head">
+        <p class="eyebrow">Legal</p>
+        <h2 id="legal-heading">Terms &amp; privacy</h2>
+        <p>The two public documents for this app — the pages to link from the TikTok app listing.</p>
+      </div>
+      <div class="legal-grid">
+        <a class="legal-card" href="https://muse.ai/s/creator-stack-combo-terms-of-service-xaxq6gxkxsn2lxgi/wHeBvDSKIgtvSjLBSz9UdrkwGeqfsAhQEh3QuNXaMcU">
+          <h3>Terms of Service</h3>
+          <p>What Creator Stack Combo is, who may use it, how the TikTok connection may be used, and the limits and responsibilities that come with running it on your own computer.</p>
+          <span class="go">Read the Terms of Service <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="legal-card" href="https://muse.ai/s/creator-stack-combo-privacy-policy-xdj6gxkxrxyrxq5xp/2LU01JxFZ2MaMsN_2jXFqgLLKfjShMWuhoKWii_Z5Fs">
+          <h3>Privacy Policy</h3>
+          <p>What information the app accesses when a creator connects their TikTok account, where that information is stored, how long it is kept, and how to revoke access.</p>
+          <span class="go">Read the Privacy Policy <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <p><strong style="color:var(--ink)">Creator Stack Combo</strong> · A local-first TikTok creator operations tool from the TIKTOK Manager Bot developer organization. Runs on the creator's own computer — drafts content for human approval and makes vertical clips with ClipForge.</p>
+    </div>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="https://muse.ai/s/creator-stack-combo-terms-of-service-xaxq6gxkxsn2lxgi/wHeBvDSKIgtvSjLBSz9UdrkwGeqfsAhQEh3QuNXaMcU">Terms of Service</a>
+      <a href="https://muse.ai/s/creator-stack-combo-privacy-policy-xdj6gxkxrxyrxq5xp/2LU01JxFZ2MaMsN_2jXFqgLLKfjShMWuhoKWii_Z5Fs">Privacy Policy</a>
+      <a href="#top">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
